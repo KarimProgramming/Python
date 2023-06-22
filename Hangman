@@ -1,0 +1,34 @@
+def join_letters(array):
+    string = ''
+    for i in array:
+        string += i
+    return string
+
+def separate_letters(string):
+    arr = []
+    for i in string:
+        arr.append(i)
+    return arr
+
+def game(word):
+    win = False
+    lives = len(word)
+    dashes = separate_letters(len(word) * '-')
+    
+    while (lives > 0 and not win):
+        letter = input('Guess a letter: ')
+        if letter in word:
+            # Replace the corresponding dashes with the correct letter
+            for i in range(len(word)):
+                if word[i] == letter:
+                    dashes[i] = letter
+        else:
+            lives -= 1
+        
+        if join_letters(dashes) == word:
+            win = True
+    
+    if lives == 0:
+        return 'You Lost'
+    else:
+        return 'You Won!'
