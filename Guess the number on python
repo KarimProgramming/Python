@@ -1,0 +1,18 @@
+import random
+import math
+def Guess_the_number(low,high):
+    hidden=random.randint(low, high)
+    tries=math.ceil(math.log(high-low+1,2))
+    print(f'you have {tries} tries')
+    while tries>0:
+        num=int(input(f'Guess a number between {low} and {high}'))
+        if num==hidden:
+            return "You won"
+        elif num<hidden:
+            print('too low')
+            tries-=1
+        else:
+            print('too high')
+            tries-=1
+    x=f'You lost the number was {hidden}'
+    return x
